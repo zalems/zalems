@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monitoreo Onsys</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Agregar Chart.js -->
+</head>
+<body>
+  <div class="header">
+    <h1>Monitoreo General ONSYS</h1>
+    <div id="mikrotik-info">Cargando datos de MikroTik...</div>
+    <img src="/images/logo.png" alt="Logo">
+  </div>
+  <div id="app">
+    <div class="sidebar">
+      <h2>NODOS</h2>
+      <ul id="grupos-list"></ul>
+      <button id="toggle-panel">Agregar/Editar Grupo/Equipo</button>
+      <div id="panel" class="panel">
+        <h3>Agregar/Editar Grupo</h3>
+        <form id="grupo-form">
+          <div class="form-group">
+            <label for="grupo-nombre">Nombre del Grupo</label>
+            <input type="text" id="grupo-nombre" required>
+          </div>
+          <button type="submit">Guardar Grupo</button>
+        </form>
+        <h3>Agregar/Editar Equipo</h3>
+        <form id="equipo-form">
+          <div class="form-group">
+            <label for="equipo-grupo">Grupo</label>
+            <select id="equipo-grupo" required></select>
+          </div>
+          <div class="form-group">
+            <label for="equipo-nombre">Nombre del Equipo</label>
+            <input type="text" id="equipo-nombre" required>
+          </div>
+          <div class="form-group">
+            <label for="equipo-estado">Estado</label>
+            <select id="equipo-estado" required>
+              <option value="Activo">Activo</option>
+              <option value="Inactivo">Inactivo</option>
+            </select>
+          </div>
+          <button type="submit">Guardar Equipo</button>
+        </form>
+      </div>
+    </div>
+    <div class="content">
+      <h2>ESTADO DE OLT's</h2>
+      <div id="olt-central" class="olt-container" onclick="window.location.href='http://198.12.37.7:19001'">
+        <h3>OLT CENTRAL</h3>
+        <p>198.12.37.7:19001</p>
+        <p id="olt-status-central">Revisando...</p>
+      </div>
+      <div id="olt-trozarello-1" class="olt-container" onclick="window.location.href='http://198.12.37.7:19081'">
+        <h3>OLT TROZARELLO 1</h3>
+        <p>198.12.37.7:19081</p>
+        <p id="olt-status-trozarello-1">Revisando...</p>
+      </div>
+      <div id="olt-trozarello-2" class="olt-container" onclick="window.location.href='http://198.12.37.7:19081'">
+        <h3>OLT TROZARELLO 2</h3>
+        <p>198.12.37.7:19081</p>
+        <p id="olt-status-trozarello-2">Revisando...</p>
+      </div>
+      <div id="olt-liguria" class="olt-container" onclick="window.location.href='http://198.12.37.6:6500'">
+        <h3>OLT LIGURIA</h3>
+        <p>198.12.37.6:6500</p>
+        <p id="olt-status-liguria">Revisando...</p>
+      </div>
+      <div class="chart-container">
+        <canvas id="uptime-chart"></canvas> <!-- Contenedor del gráfico -->
+      </div>
+    </div>
+  </div>
+  <script src="/js/scripts.js"></script>
+</body>
+</html>
